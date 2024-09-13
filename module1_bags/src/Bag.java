@@ -5,6 +5,7 @@ import java.util.HashMap;
 public class Bag {
     // fields
     // hashmap to store items as keys, and count as value
+    // TODO: make data types generic
     private HashMap<String, Integer> bagMap;
     // default constructor
     Bag(){
@@ -12,7 +13,23 @@ public class Bag {
     }
     // Methods
     // void add(T item)`: This method should add an item of type T to the bag.
+    public void add(String item) {
+        // if item in bag, increment count
+        //  else, add to bag
+        if (this.bagMap.containsKey(item)) { 
+            Integer value = this.bagMap.get(item);
+            this.bagMap.replace(item, value + 1);
+        }
+        else {
+            this.bagMap.put(item, 1);
+        }
+    }
     // void remove(T item)`: This method should remove one occurrence of the item from the bag, if it exists.
     // - `boolean contains(T item)`: This method should return true if the item exists in the bag; otherwise, it should return false.
     // - `int count(T item)`: Return count if exists, null if not.
+
+    @Override
+    public String toString() {
+        return this.bagMap.toString();
+    }
 }
