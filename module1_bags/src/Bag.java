@@ -40,6 +40,9 @@ public class Bag {
         }
     }
     // - `boolean contains(T item)`: This method should return true if the item exists in the bag; otherwise, it should return false.
+    public boolean contains(String item) {
+        return this.bagMap.containsKey(item);
+    }
     // - `int count(T item)`: Return count if exists, null if not.
 
     @Override
