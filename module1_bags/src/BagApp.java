@@ -1,9 +1,11 @@
 
 public class BagApp {
     public static void main(String[] args) throws Exception {
-        // Create an instance of the `Bag` class.
+        // Create an instance of the `Bag` class for String keys
         Bag<String> newBag = new Bag<>();
-        String item; // declare item variable for item tests
+        
+        // declare item variable for item tests
+        String item; 
         
         // Add several elements to the bag, including duplicates.
         String[] produceArray = {"Apple", "Apple", "Orange", "Banana"};
