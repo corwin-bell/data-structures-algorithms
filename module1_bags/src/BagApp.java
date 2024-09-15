@@ -1,20 +1,40 @@
+
 public class BagApp {
     public static void main(String[] args) throws Exception {
+        // Create an instance of the `Bag` class.
         Bag newBag = new Bag();
-        newBag.add("Apples");
-        System.out.println(newBag.contains("Apples"));
-        System.out.println(newBag.contains("Oranges"));
-        newBag.add("Oranges");
-        System.out.println(newBag.toString());
-        newBag.add("Apples");
-        System.out.println(newBag.toString());
-        newBag.remove("Apples");
-        System.out.println(newBag.toString());
-        newBag.remove("Apples");
-        System.out.println(newBag.toString());
-        newBag.remove("Apples");
-        System.out.println(newBag.toString());
-        System.out.println(newBag.count("Apples"));
-        System.out.println(newBag.count("Oranges"));
+        String item; // declare item variable for item tests
+        
+        // Add several elements to the bag, including duplicates.
+        String[] produceArray = {"Apple", "Apple", "Orange", "Banana"};
+        for (String produce: produceArray) {
+            newBag.add(produce);
+        }
+        // Print the bag contents.
+        System.out.println("Bag contents: " + newBag.toString());
+        
+        // Test the `contains` method for a few elements.
+        item = "Apple";
+        System.out.printf("Does the bag contain %s?: %b \n", item, newBag.contains(item));
+        item = "Eggs";
+        System.out.printf("Does the bag contain %s?: %b \n", item, newBag.contains(item));
+
+        // Test the `count` method for a few elements.
+        item = "Apple";
+        System.out.printf("The bag has %d %s\n", newBag.count(item), item);
+        item = "Banana";
+        System.out.printf("The bag has %d %s\n", newBag.count(item), item);
+
+        // Remove an element from the bag.
+        newBag.remove(item);
+
+        // Print the bag contents again
+        System.out.println("Bag contents: " + newBag.toString());
+
+        // Test the `contains` method for the removed element.
+        System.out.printf("Does the bag contain %s?: %b \n", item, newBag.contains(item));
+        
+        // Test the `count` method for the removed element.
+        System.out.printf("Count of %s: %d\n", item, newBag.count(item));
     }
 }
