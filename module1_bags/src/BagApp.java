@@ -2,7 +2,7 @@
 public class BagApp {
     public static void main(String[] args) throws Exception {
         // Create an instance of the `Bag` class.
-        Bag newBag = new Bag();
+        Bag<String> newBag = new Bag<>();
         String item; // declare item variable for item tests
         
         // Add several elements to the bag, including duplicates.
