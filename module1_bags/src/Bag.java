@@ -25,6 +25,20 @@ public class Bag {
         }
     }
     // void remove(T item)`: This method should remove one occurrence of the item from the bag, if it exists.
+    public void remove(String item) {
+        if (this.bagMap.containsKey(item)) {
+            Integer value = this.bagMap.get(item);
+            if (value > 1) {
+                this.bagMap.replace(item, value - 1);
+            }
+            else if (value == 1) {
+                this.bagMap.remove(item);
+            }
+        }
+        else {
+            System.out.printf("there is no %s in the bag\n", item);
+        }
+    }
     // - `boolean contains(T item)`: This method should return true if the item exists in the bag; otherwise, it should return false.
     // - `int count(T item)`: Return count if exists, null if not.
 

@@ -6,5 +6,11 @@ public class BagApp {
         System.out.println(newBag.toString());
         newBag.add("Apples");
         System.out.println(newBag.toString());
+        newBag.remove("Apples");
+        System.out.println(newBag.toString());
+        newBag.remove("Apples");
+        System.out.println(newBag.toString());
+        newBag.remove("Apples");
+        System.out.println(newBag.toString());
     }
 }
