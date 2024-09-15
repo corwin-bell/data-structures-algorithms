@@ -44,6 +44,14 @@ public class Bag {
         return this.bagMap.containsKey(item);
     }
     // - `int count(T item)`: Return count if exists, null if not.
+    public Integer count(String item) {
+        if (this.bagMap.containsKey(item)) {
+            return this.bagMap.get(item);
+        }
+        else {
+            return null;
+        }
+    }
 
     @Override
     public String toString() {

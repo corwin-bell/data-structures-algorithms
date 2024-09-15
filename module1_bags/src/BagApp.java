@@ -14,5 +14,7 @@ public class BagApp {
         System.out.println(newBag.toString());
         newBag.remove("Apples");
         System.out.println(newBag.toString());
+        System.out.println(newBag.count("Apples"));
+        System.out.println(newBag.count("Oranges"));
     }
 }
