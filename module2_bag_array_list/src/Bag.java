@@ -3,13 +3,13 @@ import java.util.HashMap;
 // Modify the `Bag` class from the previous assignment to include the following additional methods:
 
 // A Bag implementation that handles generic types and stores duplicates as an integer count
-public class Bag2<T> {
+public class Bag<T> {
     // fields
     // hashmap to store items as keys, and count as value
     private HashMap<T, Integer> bagMap;
     
     // default constructor
-    Bag2(){
+    Bag(){
         this.bagMap = new HashMap<>(); 
     }
     
@@ -42,11 +42,13 @@ public class Bag2<T> {
     }
     
     // return true if the item exists in the bag; otherwise, it should return false.
+    
     public boolean contains(T item) {
         return this.bagMap.containsKey(item);
     }
     
     // return count if exists, null if not.
+    
     public Integer count(T item) {
         if (this.bagMap.containsKey(item)) {
             return this.bagMap.get(item);
@@ -56,7 +58,8 @@ public class Bag2<T> {
         }
     }
 
-    // TODO: `int size()`: This method should return the total number of elements in the bag, including duplicates.
+    // return the total number of elements in the bag, including duplicates.
+    
     public Integer getSize() {
         Integer size = 0;
         for (Integer value: this.bagMap.values()) {
@@ -64,10 +67,22 @@ public class Bag2<T> {
         }
         return size;
     }
-    // TODO: `void merge(Bag<T> otherBag)`: This method should merge the elements of `otherBag` into the current bag.
+    // return bagMap from bag, needed for merge
+    
+    public HashMap<T, Integer> getBagMap() { return bagMap; }
+
+    // This method should merge the elements of `otherBag` into the current bag.
+    
+    public void merge(Bag<T> otherBag) {
+        // HashMap<T, Integer> otherBagMap = otherBag.getBagMap();
+        for (T key: otherBag.getBagMap().keySet()) {
+            add(key);
+        }
+        
+    }
     // TODO: `Bag<T> distinct()`: This method should return a new bag that contains only the distinct elements from the current bag.
 
-    @Override
+    
     public String toString() {
         return this.bagMap.toString();
     }
