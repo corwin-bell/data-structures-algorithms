@@ -1,7 +1,4 @@
 import java.util.HashMap;
-
-// Modify the `Bag` class from the previous assignment to include the following additional methods:
-
 // A Bag implementation that handles generic types and stores duplicates as an integer count
 public class Bag<T> {
     // fields
@@ -42,13 +39,11 @@ public class Bag<T> {
     }
     
     // return true if the item exists in the bag; otherwise, it should return false.
-    
     public boolean contains(T item) {
         return this.bagMap.containsKey(item);
     }
     
     // return count if exists, null if not.
-    
     public Integer count(T item) {
         if (this.bagMap.containsKey(item)) {
             return this.bagMap.get(item);
@@ -59,7 +54,6 @@ public class Bag<T> {
     }
 
     // return the total number of elements in the bag, including duplicates.
-    
     public Integer getSize() {
         Integer size = 0;
         for (Integer value: this.bagMap.values()) {
@@ -67,21 +61,23 @@ public class Bag<T> {
         }
         return size;
     }
-    // return bagMap from bag, needed for merge
-    
+    // return bagMap from bag, needed for merge method
     public HashMap<T, Integer> getBagMap() { return bagMap; }
 
-    // This method should merge the elements of `otherBag` into the current bag.
-    
+    // merge the elements of `otherBag` into the current bag.
     public void merge(Bag<T> otherBag) {
-        // HashMap<T, Integer> otherBagMap = otherBag.getBagMap();
         for (T key: otherBag.getBagMap().keySet()) {
             add(key);
-        }
-        
+        }  
     }
-    // TODO: `Bag<T> distinct()`: This method should return a new bag that contains only the distinct elements from the current bag.
-
+    // return a new bag that contains only the distinct elements from the current bag.
+    public Bag<T> distinct() {
+        Bag<T> distinctBag = new Bag<>();
+        for (T key: this.bagMap.keySet()) {
+            distinctBag.add(key);
+        }
+        return distinctBag;
+    }
     
     public String toString() {
         return this.bagMap.toString();
