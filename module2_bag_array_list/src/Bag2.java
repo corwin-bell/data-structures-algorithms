@@ -1,9 +1,6 @@
 import java.util.HashMap;
 
 // Modify the `Bag` class from the previous assignment to include the following additional methods:
-// TODO: `int size()`: This method should return the total number of elements in the bag, including duplicates.
-// TODO: `void merge(Bag<T> otherBag)`: This method should merge the elements of `otherBag` into the current bag.
-// TODO: `Bag<T> distinct()`: This method should return a new bag that contains only the distinct elements from the current bag.
 
 // A Bag implementation that handles generic types and stores duplicates as an integer count
 public class Bag2<T> {
@@ -58,6 +55,17 @@ public class Bag2<T> {
             return null;
         }
     }
+
+    // TODO: `int size()`: This method should return the total number of elements in the bag, including duplicates.
+    public Integer getSize() {
+        Integer size = 0;
+        for (Integer value: this.bagMap.values()) {
+            size += value;
+        }
+        return size;
+    }
+    // TODO: `void merge(Bag<T> otherBag)`: This method should merge the elements of `otherBag` into the current bag.
+    // TODO: `Bag<T> distinct()`: This method should return a new bag that contains only the distinct elements from the current bag.
 
     @Override
     public String toString() {
