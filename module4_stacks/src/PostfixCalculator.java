@@ -21,7 +21,7 @@ public class PostfixCalculator {
         }
     }
     // operate method
-    private Double operate(Double operand1, Double operand2, String operator) {
+    private Double calculate(Double operand1, Double operand2, String operator) {
         switch (operator) {
             case "+":
                 return operand2 + operand1;
@@ -43,7 +43,7 @@ public class PostfixCalculator {
                 throw new IllegalArgumentException("Invalid operator: " + operator);
         }
     }
-    public Double calculate(String postfixStr) {  
+    public Double evaluatePostfix(String postfixStr) {  
         // split postfix str to an array of postfix items
         String[] postfixArray = postfixStr.split(" ");    
         // store array of operators to test
@@ -55,20 +55,19 @@ public class PostfixCalculator {
         for (String item: postfixArray) {
             if (isDouble(item)) {
                 postfixStack.push(Double.parseDouble(item));
-                System.out.println("item: " + postfixStack.peek() + " added to stack.");
+                // System.out.println("item: " + postfixStack.peek() + " added to stack.");
             }
-            else if (Arrays.asList(operatorArray).contains(item)) {
-                // try catch for EmptyStackException
+            else if (Arrays.asList(operatorArray).contains(item)) { 
                 operand1 = postfixStack.pop();
                 operand2 = postfixStack.pop();
-                postfixStack.push(operate(operand1, operand2, item));
-                System.out.println(operand2 + item + operand1 + " = " + postfixStack.peek() + " added to stack");
-            }
+                postfixStack.push(calculate(operand1, operand2, item));
+                // System.out.println(operand2 + item + operand1 + " = " + postfixStack.peek() + " added to stack");        
+                }
             else {
-                throw new IllegalArgumentException("Invalid input value: " + item);
+                throw new IllegalArgumentException("Invalid postfix expression: " + item + " is not valid operand or operator");
             }
         } 
-        System.out.println("result: " + postfixStack.peek());
+        // System.out.println("result: " + postfixStack.peek());
         return postfixStack.pop();    
     }
 
