@@ -65,13 +65,9 @@ public class PostfixCalculator {
                 System.out.println(operand2 + item + operand1 + " = " + postfixStack.peek() + " added to stack");
             }
             else {
-                // TODO: refactor as new InvalidPostfixException Class and throw here
-                System.out.println("Invalid Postfix");
+                throw new IllegalArgumentException("Invalid input value: " + item);
             }
-        }
-            // if double, push to stack
-            // if operator, pop last two stack items, operate, push result to stack
-            // else, invalid input   
+        } 
         System.out.println("result: " + postfixStack.peek());
         return postfixStack.pop();    
     }

@@ -2,7 +2,7 @@ public class PostfixCalcTest {
     public static void main(String[] args) throws Exception {
         PostfixCalculator calculator = new PostfixCalculator();
         // TODO: add function to read postfix strings from a text file.
-        calculator.calculate("3 22 + 10 * 0 /");
+        calculator.calculate("3 2 + G * 0 /");
         // // Example 1: Valid Expression
         // String expression1 = "42*3+";
         // System.out.println("Result 1: " + calculator.evaluatePostfix(expression1));
