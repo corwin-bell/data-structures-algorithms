@@ -22,20 +22,25 @@ public class PostfixCalculator {
     }
     // operate method
     private Double operate(Double operand1, Double operand2, String operator) {
-        // add try catch for divide by zero and other weird math behavior
         switch (operator) {
             case "+":
-            return operand2 + operand1;
+                return operand2 + operand1;
             case "-":
-            return operand2 - operand1;
+                return operand2 - operand1;
             case "*":
-            return operand2 * operand1;
+                return operand2 * operand1;
             case "/":
-            return operand2 / operand1;
+                if (operand1 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return operand2 / operand1;      
             case "%":
-            return operand2 % operand1;
+                if (operand1 == 0) {
+                    throw new ArithmeticException("Division by zero");
+                }
+                return operand2 % operand1;
             default:
-                return -1.0;
+                throw new IllegalArgumentException("Invalid operator: " + operator);
         }
     }
     public Double calculate(String postfixStr) {  
@@ -60,6 +65,7 @@ public class PostfixCalculator {
                 System.out.println(operand2 + item + operand1 + " = " + postfixStack.peek() + " added to stack");
             }
             else {
+                // TODO: refactor as new InvalidPostfixException Class and throw here
                 System.out.println("Invalid Postfix");
             }
         }
