@@ -90,6 +90,5 @@ public class PostfixCalculator {
         } 
         return postfixStack.pop();    
     }
-
 }
 

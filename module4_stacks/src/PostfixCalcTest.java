@@ -52,9 +52,9 @@ public class PostfixCalcTest {
         }
     }
     public static void main(String[] args) throws Exception {
-        // Test operator correctness with valid postfix input
-        String addPostfix = "4 2 + 3 +";
-        testPostfix(addPostfix, "9");
+        // Test operator correctness with valid postfix input, single and double digit
+        String addPostfix = "4 20 + 3 +";
+        testPostfix(addPostfix, "27");
         
         String subtractPostfix = "5 3 - 7 -";
         testPostfix(subtractPostfix, "-5");
