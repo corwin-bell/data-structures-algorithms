@@ -4,6 +4,12 @@ import java.io.FileReader;
 import java.io.IOException;
 
 public class PostfixCalcTest {
+    
+    /**
+     * Prints evaluation of postfix expressions for expected result. 
+     * @param postfixExpression String representation of postfix expression, all operands and operators must be separated by a space 
+     * @param expectedResult String of expected postfix expression result
+     */
     public static void testPostfix(String postfixExpression, String expectedResult) {
         PostfixCalculator calculator = new PostfixCalculator();
         String resultString = "Expected " + expectedResult + ", got: ";
@@ -22,7 +28,13 @@ public class PostfixCalcTest {
         System.out.println(resultString);
     }
 
-    // expected result and postfix expression delimmited by : 
+    
+    /**
+     * Prints evaluation of expected postfix expression result and postfix expression stored in a text file.
+     * Text file must have one (result: expression) pair per line separated by colon, with expression members 
+     * separated by a space (e.g. 9:4 2 + 3 +).
+     * @param filePath String of path to text file.
+     */ 
     public static void testPostfixFromTextFile(String filePath) {
         try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
             String line;
