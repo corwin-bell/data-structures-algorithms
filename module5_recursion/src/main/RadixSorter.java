@@ -16,6 +16,17 @@ public class RadixSorter {
             // clear buckets
         
     // getMaxDigits (input array)
+    public static int getMaxDigits(int[] intArray) {
+        int maxDigits = getDigits(intArray[0]);
+        int numberDigits;
+        for (int i = 1; i < intArray.length; i++) {
+            numberDigits = getDigits(intArray[i]);
+            if (numberDigits > maxDigits) {
+                maxDigits = numberDigits;
+            }
+        }
+        return maxDigits;
+    }
         // loop of getDigits
     // getDigits (Integer)
     public static int getDigits(int Number) {
