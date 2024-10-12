@@ -1,18 +1,5 @@
-## Getting Started
-
-Welcome to the VS Code Java world. Here is a guideline to help you get started to write Java code in Visual Studio Code.
-
-## Folder Structure
-
-The workspace contains two folders by default, where:
-
-- `src`: the folder to maintain sources
-- `lib`: the folder to maintain dependencies
-
-Meanwhile, the compiled output files will be generated in the `bin` folder by default.
-
-> If you want to customize the folder structure, open `.vscode/settings.json` and update the related settings there.
-
-## Dependency Management
-
-The `JAVA PROJECTS` view allows you to manage your dependencies. More details can be found [here](https://github.com/microsoft/vscode-java-dependency#manage-dependencies).
+# Module 5 Recursion Option #1: Integer Objects
+Implement the radix sort algorithm in Java. Analyze your algorithm in Big-Oh notation and provide the appropriate analysis.
+Analyze the algorithm by documenting the steps taken when radix sort sorts the following array of Integer objects: 783 99 472 182 264 543 356 295 692 491 94
+Analyze the Big-O of your algorithm.
+Ensure that your program has the required class and a test class. Compile and submit CTA 5, the Big-Oh evaluations, and screenshots of your program's execution and output in a single document. Also attach all appropriate source code. Combine all contents into a single zip file.
