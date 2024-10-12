@@ -1,14 +1,10 @@
 package main;
 
 public class RadixSorter {
-    // class members
-    
-
-    // Default constructor, declare empty bucket array 
     
     // methods
-    // radixSort (Integer[] intArray)
-        // bucket array of arraylist<Integer> size 10 to store integers by digit
+    // radixSort (int[] intArray)
+        // bucket array of arraylist<int> size 10 to store integers by digit
         // getMaxDigits
         // for each digit index
             // for each int in intArray
@@ -22,6 +18,11 @@ public class RadixSorter {
     // getMaxDigits (input array)
         // loop of getDigits
     // getDigits (Integer)
+    public static int getDigits(int Number) {
+        if (Number == 0) { return 1; }
+        return (int) Math.log10(Number) + 1;
+        
+    }
         // find number of digits of input integer
     public static void main(String[] args) {
         
