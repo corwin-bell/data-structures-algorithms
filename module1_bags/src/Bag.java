@@ -1,6 +1,8 @@
 import java.util.HashMap;
 
-// A Bag implementation that handles generic types and stores duplicates as an integer count
+/**
+ * A Bag implementation that handles generic types and stores duplicates as an integer count
+ */
 public class Bag<T> {
     // fields
     // hashmap to store items as keys, and count as value
@@ -11,8 +13,11 @@ public class Bag<T> {
         this.bagMap = new HashMap<>(); 
     }
     
-    // Methods
-    // add an item of type T to the bag.
+    
+    /**
+     * add an item of type T to the bag. 
+     * @param item
+     */
     public void add(T item) {
         if (this.bagMap.containsKey(item)) { 
             Integer value = this.bagMap.get(item);
@@ -23,7 +28,11 @@ public class Bag<T> {
         }
     }
     
-    // remove one occurrence of the item from the bag, if it exists.
+    
+    /** 
+     * remove one occurrence of the item from the bag, if it exists.
+     * @param item
+     */
     public void remove(T item) {
         if (this.bagMap.containsKey(item)) {
             Integer value = this.bagMap.get(item);
@@ -39,12 +48,22 @@ public class Bag<T> {
         }
     }
     
-    // return true if the item exists in the bag; otherwise, it should return false.
+    
+    /**
+     * return true if the item exists in the bag; otherwise, it should return false. 
+     * @param item
+     * @return boolean
+     */
     public boolean contains(T item) {
         return this.bagMap.containsKey(item);
     }
     
-    // return count if exists, null if not.
+    
+    /** 
+     * return count if exists, null if not.
+     * @param item
+     * @return Integer
+     */
     public Integer count(T item) {
         if (this.bagMap.containsKey(item)) {
             return this.bagMap.get(item);
@@ -54,6 +73,11 @@ public class Bag<T> {
         }
     }
 
+    
+    /** 
+     * returns the string representation of the bag contents.
+     * @return String
+     */
     @Override
     public String toString() {
         return this.bagMap.toString();
