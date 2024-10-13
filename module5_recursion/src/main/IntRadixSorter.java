@@ -21,30 +21,29 @@ public class IntRadixSorter {
         // create bucket array, array of arraylist to store int values sorted by digit
         @SuppressWarnings("unchecked") // since I know the array only needs 10 buckets 
         ArrayList<Integer>[] bucketArray = new ArrayList[10];
-        for (int i = 0; i < bucketArray.length; i++) {
-            bucketArray[i] = new ArrayList<Integer>();
+        for (int bucket = 0; bucket < bucketArray.length; bucket++) {
+            bucketArray[bucket] = new ArrayList<Integer>();
         }
-        for (int i = 0; i < maxDigits; i++) {
-            System.out.println("current digit: " + (i + 1));
-            for (int j = 0; j < intArray.length; j++) {
-                System.out.print(intArray[j]);
+        for (int digit = 0; digit < maxDigits; digit++) {
+            System.out.println("current digit: " + (digit + 1));
+            for (int i = 0;  i < intArray.length; i++) {
+                System.out.print(intArray[i]);
                 // place int in bucket based on digit value
-                int digitValue = (intArray[j] % currPow) / (currPow / 10);
+                int digitValue = (intArray[i] % currPow) / (currPow / 10);
                 System.out.println(", digit value: " + digitValue);
-                bucketArray[digitValue].add(intArray[j]);
+                bucketArray[digitValue].add(intArray[i]);
             }
-            int index = 0;
-            for (int k = 0; k < bucketArray.length; k++) {
-                for (int l = 0; l < bucketArray[k].size(); l++) {
-                    int sortedVal = bucketArray[k].get(l);
-                    intArray[index] = sortedVal;
-                    index++;
+            int i = 0;
+            for (int bucket = 0; bucket < bucketArray.length; bucket++) {
+                for (int j = 0; j < bucketArray[bucket].size(); j++) { 
+                    intArray[i] = bucketArray[bucket].get(j);
+                    i++;
                 }
             }
-            System.out.println("sorted array for digit " + (i + 1) + ": " + Arrays.toString(intArray) + "\n");
+            System.out.println("sorted array for digit " + (digit + 1) + ": " + Arrays.toString(intArray) + "\n");
             currPow *= 10;
-            for (int m = 0; m < bucketArray.length; m++) {
-                bucketArray[m].clear();
+            for (int bucket = 0; bucket < bucketArray.length; bucket++) {
+                bucketArray[bucket].clear();
             }
         }
         return intArray;
