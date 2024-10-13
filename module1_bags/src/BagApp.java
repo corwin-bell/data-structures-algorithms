@@ -5,8 +5,9 @@ public class BagApp {
         Bag<String> newBag = new Bag<>();
         
         // declare item variable for item tests
-        String item; 
-        
+        String item = null; 
+        newBag.add(item);
+        newBag.remove(item);
         // Add several elements to the bag, including duplicates.
         String[] produceArray = {"Apple", "Apple", "Orange", "Banana"};
         for (String produce: produceArray) {
