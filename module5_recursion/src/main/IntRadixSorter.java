@@ -1,52 +1,48 @@
 package main;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 
+/**
+ * Contains method to sort arrays of unsigned integers using radix sort. 
+ */
 public class IntRadixSorter {
     
-    // methods
-    // radixSort (int[] intArray)
+    /**
+     * Method to sort an array of unsigned integers using radix sort. 
+     * @param intArray
+     * @return int[]
+     */
     public static int[] intRadixSort(int[] intArray) {
-        // bucket array of arraylist<int> size 10 to store integers by digit
-        // I'm ok with supressing this warning since this method is designed to only work
-        // with positive integers, making the use of an array of lists preferable to other structures
-        @SuppressWarnings("unchecked")
+        
+        System.out.println("input array: " + Arrays.toString(intArray));
+        int maxDigits = getMaxDigits(intArray);
+        System.out.println("max digits: " + maxDigits);
+        int currPow = 10;
+        // create bucket array, array of arraylist to store int values sorted by digit
+        @SuppressWarnings("unchecked") // since I know the array only needs 10 buckets 
         ArrayList<Integer>[] bucketArray = new ArrayList[10];
         for (int i = 0; i < bucketArray.length; i++) {
             bucketArray[i] = new ArrayList<Integer>();
         }
-        // getMaxDigits
-        int maxDigits = getMaxDigits(intArray);
-        System.out.println("max digits: " + maxDigits);
-        int currPow = 10;
-        System.out.println("current power: " + currPow);
-        // for each digit index
         for (int i = 0; i < maxDigits; i++) {
-            System.out.println("current digit: " + i);
-            // for each int in intArray
+            System.out.println("current digit: " + (i + 1));
             for (int j = 0; j < intArray.length; j++) {
-                System.out.println("in number: " + intArray[j]);
-                // place int in bucket matching value
+                System.out.print(intArray[j]);
+                // place int in bucket based on digit value
                 int digitValue = (intArray[j] % currPow) / (currPow / 10);
-                System.out.println("digit value: " + digitValue);
+                System.out.println(", digit value: " + digitValue);
                 bucketArray[digitValue].add(intArray[j]);
             }
-            // for each bucket
             int index = 0;
             for (int k = 0; k < bucketArray.length; k++) {
-                // for each int in bucket
                 for (int l = 0; l < bucketArray[k].size(); l++) {
-                    // put ints back in array
                     int sortedVal = bucketArray[k].get(l);
-                    System.out.println("sorted value: " + sortedVal);
                     intArray[index] = sortedVal;
                     index++;
                 }
             }
-            System.out.println("sorted array for digit: " + Arrays.toString(intArray));
+            System.out.println("sorted array for digit " + (i + 1) + ": " + Arrays.toString(intArray) + "\n");
             currPow *= 10;
-            // clear buckets
             for (int m = 0; m < bucketArray.length; m++) {
                 bucketArray[m].clear();
             }
@@ -54,7 +50,11 @@ public class IntRadixSorter {
         return intArray;
     }
         
-    // getMaxDigits (input array)
+    /**
+     * Returns the maximum number of digits for an array of positive integers. 
+     * @param intArray
+     * @return int
+     */
     public static int getMaxDigits(int[] intArray) {
         int maxDigits = getDigits(intArray[0]);
         int numberDigits;
@@ -66,17 +66,18 @@ public class IntRadixSorter {
         }
         return maxDigits;
     }
-        // loop of getDigits
-    // getDigits (Integer)
+    
+    /** 
+     * Returns the number of digits for a positive integer.
+     * @param Number
+     * @return int
+     * @exception IllegalArgumentException if input integer is negative
+     */
     public static int getDigits(int Number) {
+        if (Number < 0) {
+            throw new IllegalArgumentException("negative integer " + Number + " not allowed, must be positive");
+        }
         if (Number == 0) { return 1; }
         return (int) Math.log10(Number) + 1;
-        
     }
-        // find number of digits of input integer
-    public static void main(String[] args) {
-        int[] testArray = {987, 123, 100, 98, 56, 12, 10, 9, 1, 0};
-        intRadixSort(testArray);
-    }
-
 }

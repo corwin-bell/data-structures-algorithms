@@ -1,11 +1,8 @@
 package main;
 
-import example_files.ReverseStringRecurse;
-
 public class App {
-    public static void main(String[] args) throws Exception {
-        ReverseStringRecurse stringreverser = new ReverseStringRecurse();
-        String reversedString = stringreverser.reverseString("amanap lanac a nalp a nam a");
-        System.out.println(reversedString);
+    public static void main(String[] args) {
+        int[] testArray = {783, 99, 472, 182, 264, 543, 356, 295, 692, 491, 94};
+        IntRadixSorter.intRadixSort(testArray);
     }
 }

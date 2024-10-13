@@ -1,7 +1,9 @@
 package test;
 
-import static org.junit.Assert.assertArrayEquals;
+
+import static org.junit.jupiter.api.Assertions.assertArrayEquals;
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.Test;
 
@@ -9,6 +11,9 @@ import main.IntRadixSorter;
 
 public class IntRadixSorterTest {
     // Tests for getDigits method
+    @Test
+    public void testNegativeGetDigits() { assertThrows(IllegalArgumentException.class, () -> {IntRadixSorter.getDigits(-5);}); }
+
     @Test
     public void testZeroGetDigits() { assertEquals(1, IntRadixSorter.getDigits(0)); }
 
@@ -32,9 +37,33 @@ public class IntRadixSorterTest {
 
     // Tests for getMaxDigits method
     @Test
+    public void testNegativeGetMaxDigits() { 
+        int[] testArray = {1, 2, 3, -5};
+        assertThrows(IllegalArgumentException.class, () -> {IntRadixSorter.getMaxDigits(testArray);}); }
+
+    @Test
     public void testZeroGetMaxDigits() { 
+        int[] testArray = {0, 0, 0, 0};
+        assertEquals(1, IntRadixSorter.getMaxDigits(testArray));
+    }
+
+    @Test
+    public void testRangeGetMaxDigits() { 
         int[] testArray = {0, 1, 55, 999};
         assertEquals(3, IntRadixSorter.getMaxDigits(testArray));
+    }
+
+    // Tests for intRadixSort method
+    @Test
+    public void testNegativeIntRadixSort() { 
+        int[] testArray = {1, 2, 3, -5};
+        assertThrows(IllegalArgumentException.class, () -> {IntRadixSorter.intRadixSort(testArray);}); }
+
+    @Test
+    public void testEmptyIntRadixSort() {
+        int[] inArray = new int[5];
+        int[] sortedArray = {0, 0, 0, 0, 0};
+        assertArrayEquals(sortedArray, IntRadixSorter.intRadixSort(inArray));
     }
 
     @Test
