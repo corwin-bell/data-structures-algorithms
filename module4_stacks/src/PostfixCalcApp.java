@@ -3,7 +3,7 @@ import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 
-public class PostfixCalcTest {
+public class PostfixCalcApp {
     
     /**
      * Prints evaluation of postfix expressions for expected result. 
@@ -28,7 +28,6 @@ public class PostfixCalcTest {
         System.out.println(resultString);
     }
 
-    
     /**
      * Prints evaluation of expected postfix expression result and postfix expression stored in a text file.
      * Text file must have one (result: expression) pair per line separated by colon, with expression members 

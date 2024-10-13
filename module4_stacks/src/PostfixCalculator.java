@@ -62,7 +62,7 @@ public class PostfixCalculator {
     /**
      * Evaluates postfix expression for valid postfix notation.
      * If the postfix is valid, it will be calculated and return the result. 
-     * @param postfixStr String representation of a postfix expression, operands and operators must be separated by a space
+     * @param postfixStr String representation of a postfix expression, operands and operators must be separated by a space (e.g. "3 2 +")
      * @return Double result of the postfix expression
      * @exception IllegalArgumentException if a postfix expression item is not parseable to Double or a valid operator
      * @exception java.util.EmptyStackException if the postfix expression does not contain enough operands for the number of operators (e.g. 3 2 + -) 
