@@ -4,8 +4,8 @@ import java.util.NoSuchElementException;
 public class CustomLinkedList {
     private Node head;
 
-    public Iterator<Integer> iterator() {
-        return new LinkedListIterator();
+    public Iterator<Node> nodeIterator() {
+        return new LinkedListNodeIterator();
     }
 
          // Other methods...
@@ -21,6 +21,33 @@ public class CustomLinkedList {
         }
     }
     // TODO: create delete(int data): Deletes the first occurrence of a node with the given data.
+    public void delete (int data) {
+        // iterate through linked list
+        while (nodeIterator().hasNext()) {
+            Node current = nodeIterator().next();
+            // if node.next.data == data
+            if (current.next.data == data) {
+                Node remove = current.next;
+                // point node.next to remove.next
+                current.next = remove.next;
+                // set node.next to null for garbage collection
+                remove = null;
+                System.out.println("node " + data + " removed.");
+            }          
+        }
+                
+    }
+    // TODO: create a toString override that returns list of contents as string [1,2,3,4]
+    @Override
+    public String toString() {
+        // TODO Auto-generated method stub
+        Iterator<Node> nodeIterator = nodeIterator();
+        String listString = "";
+        while (nodeIterator.hasNext()) {
+        listString = listString + " " + nodeIterator.next().data;
+        }
+        return listString;
+    }
 
     private class Node {
         int data;
@@ -32,7 +59,7 @@ public class CustomLinkedList {
         }
     }
 
-    private class LinkedListIterator implements Iterator<Integer> {
+    private class LinkedListNodeIterator implements Iterator<Node> {
         private Node current = head;
 
         @Override
@@ -41,13 +68,13 @@ public class CustomLinkedList {
         }
 
         @Override
-        public Integer next() {
+        public Node next() {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            int data = current.data;
+            Node temp = current;
             current = current.next;
-            return data;
+            return temp;
         }
     }
 

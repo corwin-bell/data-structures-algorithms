@@ -1,4 +1,5 @@
 package main;
+
 import java.util.Iterator;
 
 public class Main {
@@ -10,11 +11,13 @@ public class Main {
         linkedList.insert(1);
         linkedList.insert(2);
         linkedList.insert(3);
+        System.out.println(linkedList.toString());
+        System.out.println(linkedList.toString());
 
+        // test delete elements
+        linkedList.delete(2);
+        System.out.println("after remove 2: " + linkedList.toString());
         // Iterate and display elements
-        Iterator<Integer> iterator = linkedList.iterator();
-        while (iterator.hasNext()) {
-            System.out.print(iterator.next() + " ");
-        }
+        
     }
 }
