@@ -9,13 +9,22 @@ public class Main {
         linkedList.insert(1);
         linkedList.insert(2);
         linkedList.insert(3);
-        System.out.println(linkedList.toString());
+        linkedList.insert(4);
+        linkedList.insert(5);
+        linkedList.insert(6);
         System.out.println(linkedList.toString());
 
-        // test delete elements
+        // delete first element
+        linkedList.delete(6);
+        System.out.println(linkedList.toString());
+
+        // delete middle element
+        linkedList.delete(4);
+        System.out.println(linkedList.toString());
+
+        // delete last element
         linkedList.delete(1);
-        System.out.println("after remove 1: " + linkedList.toString());
-        // Iterate and display elements
+        System.out.println(linkedList.toString());
         
     }
 }
