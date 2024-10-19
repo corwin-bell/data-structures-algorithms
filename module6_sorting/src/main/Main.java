@@ -1,7 +1,5 @@
 package main;
 
-import java.util.Iterator;
-
 public class Main {
     // TODO: Provide the functionality to read integer data from a text file.
     public static void main(String[] args) {
@@ -15,8 +13,8 @@ public class Main {
         System.out.println(linkedList.toString());
 
         // test delete elements
-        linkedList.delete(2);
-        System.out.println("after remove 2: " + linkedList.toString());
+        linkedList.delete(1);
+        System.out.println("after remove 1: " + linkedList.toString());
         // Iterate and display elements
         
     }

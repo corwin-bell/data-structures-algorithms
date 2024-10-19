@@ -9,7 +9,6 @@ public class CustomLinkedList {
     }
 
          // Other methods...
-    // TODO: create insert(int data): Inserts a new node with the given data.
     public void insert (int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -20,13 +19,17 @@ public class CustomLinkedList {
             head = newNode;     
         }
     }
-    // TODO: create delete(int data): Deletes the first occurrence of a node with the given data.
-    public int delete (int data) {
+    public boolean delete (int data) {
+        // TODO: handle first and last node removal
+        if (head.data == data) {
+            head = head.next;
+            System.out.println("head" + data + "removed.");
+            return true;
+        }
         // iterate through linked list
         while (nodeIterator().hasNext()) {
             Node current = nodeIterator().next();
             System.out.println("node: " + current.data);
-            // if node.next.data == data
             if (current.next.data == data) {
                 Node temp = current.next;
                 // point node.next to remove.next
@@ -34,17 +37,15 @@ public class CustomLinkedList {
                 // set node.next to null for garbage collection
                 temp = null;
                 System.out.println("node " + data + " removed.");
-                return data;
+                return true;
             }
         }
         System.out.println("node" + data + " not found.");
-        return -1;
+        return false;
                 
     }
-    // TODO: create a toString override that returns list of contents as string [1,2,3,4]
     @Override
     public String toString() {
-        // TODO Auto-generated method stub
         Iterator<Node> nodeIterator = nodeIterator();
         String listString = "";
         while (nodeIterator.hasNext()) {
