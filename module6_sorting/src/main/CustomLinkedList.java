@@ -21,20 +21,24 @@ public class CustomLinkedList {
         }
     }
     // TODO: create delete(int data): Deletes the first occurrence of a node with the given data.
-    public void delete (int data) {
+    public int delete (int data) {
         // iterate through linked list
         while (nodeIterator().hasNext()) {
             Node current = nodeIterator().next();
+            System.out.println("node: " + current.data);
             // if node.next.data == data
             if (current.next.data == data) {
-                Node remove = current.next;
+                Node temp = current.next;
                 // point node.next to remove.next
-                current.next = remove.next;
+                current.next = temp.next;
                 // set node.next to null for garbage collection
-                remove = null;
+                temp = null;
                 System.out.println("node " + data + " removed.");
-            }          
+                return data;
+            }
         }
+        System.out.println("node" + data + " not found.");
+        return -1;
                 
     }
     // TODO: create a toString override that returns list of contents as string [1,2,3,4]
