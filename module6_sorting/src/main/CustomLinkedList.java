@@ -6,6 +6,10 @@ public class CustomLinkedList {
     private Iterator<Node> nodeIterator() {
         return new LinkedListNodeIterator();
     }
+    // TODO: add javadoc
+    public Iterator<Integer> iterator() {
+        return new LinkedListIterator();
+    }
 
          // Other methods...
     public void insert (int data) {
@@ -48,8 +52,6 @@ public class CustomLinkedList {
             return false;
         }
     }
-        
-        
 
     @Override
     public String toString() {
@@ -95,6 +97,24 @@ public class CustomLinkedList {
         }
     }
 
+    private class LinkedListIterator implements Iterator<Integer> {
+        private Node current = head;
+
+        @Override
+        public boolean hasNext() {
+            return current != null;
+        }
+
+        @Override
+        public Integer next() {
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            int data = current.data;
+            current = current.next;
+            return data;
+        }
+    }
 
 }
 
