@@ -21,32 +21,35 @@ public class CustomLinkedList {
     public boolean delete (int data) {
         Iterator<Node> nodeIterator = nodeIterator();
         Node current = head;
-        //  test head for data to delete
-        if (current.data == data) {
-            head = current.next;
-            System.out.println("head " + data + " removed.");
-            return true;
-        }
-        // iterate through linked list
-        // TODO: fix while loop next repeat val for head, why?
-        while (nodeIterator.hasNext()) {
-            System.out.println("node: " + current.data);
-            if (current.next.data == data) {
-                // save matching node for deletion
-                Node temp = current.next;
-                // point current pointer to node after next
-                current.next = temp.next;
-                // set node.next to null for garbage collection
-                temp = null;
-                System.out.println("node " + data + " removed.");
+        try {
+            //  test head for data to delete
+            if (current.data == data) {
+                head = current.next;
+                System.out.println("head " + data + " removed.");
                 return true;
             }
-            current = nodeIterator.next();
-            System.out.println("next executed");
+            // TODO: fix while loop next repeat val for head, why?
+            while (nodeIterator.hasNext()) {
+                System.out.println("node: " + current.data);
+                if (current.next.data == data) {
+                    Node temp = current.next;
+                    current.next = temp.next;
+                    temp = null;
+                    System.out.println("node " + data + " removed.");
+                    return true;
+                }
+                current = nodeIterator.next();
+            }
+            System.out.println("node" + data + " not found.");
+            return false;            
+        } 
+        catch (NullPointerException e) {
+            System.out.println("Cannot delete from an empty list.");
+            return false;
         }
-        System.out.println("node" + data + " not found.");
-        return false;        
     }
+        
+        
 
     @Override
     public String toString() {
@@ -56,6 +59,11 @@ public class CustomLinkedList {
         listString = listString + " " + nodeIterator.next().data;
         }
         return listString;
+    }
+
+    public boolean isEmpty() {
+        Iterator<Node> nodeIterator = nodeIterator();
+        return !nodeIterator.hasNext();
     }
 
     private class Node {

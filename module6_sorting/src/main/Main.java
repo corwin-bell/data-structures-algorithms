@@ -5,6 +5,9 @@ public class Main {
     public static void main(String[] args) {
         CustomLinkedList linkedList = new CustomLinkedList();
 
+        // delete empty list
+        linkedList.delete(4);
+
         // Insert some elements
         linkedList.insert(1);
         linkedList.insert(2);

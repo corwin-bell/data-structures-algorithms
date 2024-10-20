@@ -50,7 +50,7 @@ public class CustomLinkedListTest {
         linkedList.insert(2);
         linkedList.insert(3);
 
-        // delete first element
+        // delete last element
         linkedList.delete(1);
         assertEquals(" 3 2", linkedList.toString());
     }
@@ -69,12 +69,35 @@ public class CustomLinkedListTest {
     }
 
     @Test
-    void testNodeIterator() {
-        
+    void testDeleteEmptyList() {
+        CustomLinkedList linkedList = new CustomLinkedList();
+
+        // delete element not in list
+        assertEquals(false, linkedList.delete(4));
     }
 
     @Test
     void testToString() {
-        
+        CustomLinkedList linkedList = new CustomLinkedList();
+        linkedList.insert(1);
+        linkedList.insert(2);
+        linkedList.insert(3);
+        assertEquals(" 3 2 1", linkedList.toString());
     }
+
+    @Test
+    void testIsEmpty() {
+        CustomLinkedList linkedList = new CustomLinkedList();
+        assertEquals(true, linkedList.isEmpty());
+    }
+
+    @Test
+    void testNotEmpty() {
+        CustomLinkedList linkedList = new CustomLinkedList();
+        linkedList.insert(1);
+        linkedList.insert(2);
+        linkedList.insert(3);
+        assertEquals(false, linkedList.isEmpty());
+    }
+
 }
