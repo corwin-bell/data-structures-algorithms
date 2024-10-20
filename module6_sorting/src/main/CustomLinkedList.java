@@ -3,15 +3,28 @@ import java.util.Iterator;
 import java.util.NoSuchElementException;
 public class CustomLinkedList {
     private Node head;
+    
+    /**
+     * Private node iterator for use in LinkedList Class methods.
+     * @return LinkedListNodeIterator object.
+     */
     private Iterator<Node> nodeIterator() {
         return new LinkedListNodeIterator();
     }
-    // TODO: add javadoc
+    /**
+     * Create new iterator object for linked list.
+     * Has methods for iterating through list node integer values.
+     * @return LinkedListIterator object.
+     */
     public Iterator<Integer> iterator() {
         return new LinkedListIterator();
     }
 
          // Other methods...
+    /**
+     * Insert node to head of linked list.
+     * @param data integer for node to store.
+     */
     public void insert (int data) {
         Node newNode = new Node(data);
         if (head == null) {
@@ -22,6 +35,12 @@ public class CustomLinkedList {
             head = newNode;     
         }
     }
+    
+    /**
+     * Deletes node that matches input integer.
+     * @param data integer to match.
+     * @return true if match found and node deleted, false if node not found.
+     */
     public boolean delete (int data) {
         Iterator<Node> nodeIterator = nodeIterator();
         Node current = head;
@@ -32,7 +51,7 @@ public class CustomLinkedList {
                 System.out.println("head " + data + " removed.");
                 return true;
             }
-            // TODO: fix while loop next repeat val for head, why?
+            // TODO: fix while loop next repeat val for head
             while (nodeIterator.hasNext()) {
                 System.out.println("node: " + current.data);
                 if (current.next.data == data) {
@@ -63,6 +82,10 @@ public class CustomLinkedList {
         return listString;
     }
 
+    /**
+     * Checks if list is empty.
+     * @return true if empty, false if not.
+     */
     public boolean isEmpty() {
         Iterator<Node> nodeIterator = nodeIterator();
         return !nodeIterator.hasNext();
@@ -115,7 +138,6 @@ public class CustomLinkedList {
             return data;
         }
     }
-
 }
 
 

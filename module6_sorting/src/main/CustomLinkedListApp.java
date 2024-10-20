@@ -30,13 +30,13 @@ public class CustomLinkedListApp {
         linkedList.delete(3);
         System.out.println(linkedList.toString());
         
-        // test iterator
+        // use public iterator
         Iterator<Integer> iterator = linkedList.iterator();
         while (iterator.hasNext()) {
             System.out.print(iterator.next() + " ");
         }
 
-        // test insert from file
+        // insert elements from file
         CustomLinkedList linkedListFromFile = new CustomLinkedList();
         insertFromTextFile("./ints.txt", linkedListFromFile);
         System.out.println(linkedListFromFile.toString());
