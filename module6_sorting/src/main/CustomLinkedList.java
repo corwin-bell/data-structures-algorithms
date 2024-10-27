@@ -11,8 +11,9 @@ public class CustomLinkedList {
     private Iterator<Node> nodeIterator() {
         return new LinkedListNodeIterator();
     }
+   
     /**
-     * Create new iterator object for linked list.
+     * Public node iterator object for linked list.
      * Has methods for iterating through list node integer values.
      * @return LinkedListIterator object.
      */
@@ -20,7 +21,6 @@ public class CustomLinkedList {
         return new LinkedListIterator();
     }
 
-         // Other methods...
     /**
      * Insert node to head of linked list.
      * @param data integer for node to store.
@@ -51,7 +51,6 @@ public class CustomLinkedList {
                 System.out.println("head " + data + " removed.");
                 return true;
             }
-            // TODO: fix while loop next repeat val for head
             while (nodeIterator.hasNext()) {
                 System.out.println("node: " + current.data);
                 if (current.next.data == data) {
