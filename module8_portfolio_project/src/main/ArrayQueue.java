@@ -38,17 +38,21 @@ public class ArrayQueue<T> implements Queue<T>{
         queueArray[queueEnd] = item;
         size++;
     }
-    // dequeue() Removes and returns the first element from the queue (or null if the queue is empty)
+
     @Override
     public T dequeue() {
-        // TODO Auto-generated method stub
-        return null;
+        if (isEmpty()) return null;
+        T frontItem = queueArray[front];
+        queueArray[front] = null;
+        front = (front + 1) % queueArray.length;
+        size--;
+        return frontItem;
     }
-    // first() Returns the first element of the queue, without removing it (or null if the queue is empty)
 
     @Override
     public T first() {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'first'");
+        if (isEmpty()) return null;
+        return queueArray[front];
+        
     }    
 }

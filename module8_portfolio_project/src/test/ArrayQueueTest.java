@@ -10,7 +10,14 @@ import main.Person;
 public class ArrayQueueTest {
     @Test
     void testDequeue() {
-
+        Person john = new Person("John", "Smith", 25);
+        Person frank = new Person("Frank", "Jones", 35);
+        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
+        testArrayQueue.enqueue(john);
+        testArrayQueue.enqueue(frank);
+        Person frontItem = testArrayQueue.dequeue();
+        assertEquals("John", frontItem.getFirstName());
+        assertEquals(1, testArrayQueue.size());
     }
 
     @Test
@@ -23,7 +30,13 @@ public class ArrayQueueTest {
 
     @Test
     void testFirst() {
-
+        Person john = new Person("John", "Smith", 25);
+        Person frank = new Person("Frank", "Jones", 35);
+        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
+        testArrayQueue.enqueue(john);
+        testArrayQueue.enqueue(frank);
+        assertEquals("John", testArrayQueue.first().getFirstName());
+        assertEquals(2, testArrayQueue.size());
     }
 
     @Test
