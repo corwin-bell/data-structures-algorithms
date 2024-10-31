@@ -43,7 +43,7 @@ public class PersonQueueApp {
             scnr.nextLine(); // clear scnr for next input
             Person person = new Person(firstName, lastName, age);
             personQueue.enqueue(person);
-            System.out.println("person enqueued");
+            System.out.println("person added to queue");
         }
         catch (InputMismatchException e) {
             System.err.println("must enter correct data type for each field");

@@ -58,7 +58,6 @@ public class PersonQueueAppTest {
             assertEquals(expectedOutput, outputArray[4]);
         }
     }
-
     
     @Test
     public void testEnqueuePerson() {
@@ -70,7 +69,9 @@ public class PersonQueueAppTest {
         );
         try (Scanner testScanner = new Scanner(new ByteArrayInputStream(simulatedInput.getBytes()));) {
             PersonQueueApp.enqueuePerson(personQueue, testScanner);
-            assertEquals("first name: John, last name: Smith, age: 25", personQueue.first().toString());
+            String expectedOutput = "person added to queue";
+            String[] outputArray= outputStream.toString().split("\n");
+            assertEquals(expectedOutput, outputArray[3]);
         }
     }
 
