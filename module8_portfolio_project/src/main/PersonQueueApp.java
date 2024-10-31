@@ -56,7 +56,7 @@ public class PersonQueueApp {
             System.out.println("Person queue is empty, enqueue a person in order to list.");
         }
         else {
-            personQueue.toString();
+            System.out.println(personQueue.toString()); 
         } 
     }
     
