@@ -53,7 +53,7 @@ public class PersonQueueApp {
     public static void listPersons(ArrayQueue<Person> personQueue) {
         // print all persons in list to a new line
         if (personQueue.isEmpty()) {
-            System.out.println("Person queue is empty, enqueue a person in order to list.");
+            System.out.println("Queue is empty.");
         }
         else {
             System.out.println(personQueue.toString()); 

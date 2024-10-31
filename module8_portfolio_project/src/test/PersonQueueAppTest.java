@@ -21,12 +21,18 @@ public class PersonQueueAppTest {
     private ArrayQueue<Person> personQueue;
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
+    private String simulatedInput;
 
     @BeforeEach
     public void setUp() {
         personQueue = new ArrayQueue<>();
         originalSystemIn = System.in;
         System.setOut(new PrintStream(outputStream));
+        simulatedInput = String.join("\n",
+            "John", // first name
+            "Smith",  // last name
+            "25\n"        // age
+        );
     }
 
     @AfterEach
@@ -37,7 +43,7 @@ public class PersonQueueAppTest {
 
     @Test
     void testDequeueEmpty() {
-        String expectedOutput = "Queue is empty." + System.lineSeparator();
+        String expectedOutput = "Queue is empty.\n";
         // assert print statment is returned
         PersonQueueApp.dequeue(personQueue);
         assertEquals(expectedOutput, outputStream.toString());
@@ -45,11 +51,6 @@ public class PersonQueueAppTest {
 
     @Test
     void testDequeueNotEmpty() {
-        String simulatedInput = String.join("\n",
-            "John", // first name
-            "Smith",  // last name
-            "25\n"        // age
-        );
         String expectedOutput = "person: John dequeued";
         try (Scanner testScanner = new Scanner(new ByteArrayInputStream(simulatedInput.getBytes()));) {
             PersonQueueApp.enqueuePerson(personQueue, testScanner);
@@ -61,22 +62,23 @@ public class PersonQueueAppTest {
     
     @Test
     public void testEnqueuePerson() {
-        // Prepare multiple inputs separated by newlines
-        String simulatedInput = String.join("\n",
-            "John", // first name
-            "Smith",  // last name
-            "25\n"        // age
-        );
         try (Scanner testScanner = new Scanner(new ByteArrayInputStream(simulatedInput.getBytes()));) {
             PersonQueueApp.enqueuePerson(personQueue, testScanner);
             String expectedOutput = "person added to queue";
             String[] outputArray= outputStream.toString().split("\n");
+            // TODO: add assertion that enqueue behavior worked as expected
             assertEquals(expectedOutput, outputArray[3]);
         }
     }
 
     @Test
     void testListPersons() {
-
+        String expectedOutput = "first name: John, last name: Smith, age: 25";
+        try (Scanner testScanner = new Scanner(new ByteArrayInputStream(simulatedInput.getBytes()));) {
+            PersonQueueApp.enqueuePerson(personQueue, testScanner);
+            PersonQueueApp.listPersons(personQueue);
+            String[] outputArray= outputStream.toString().split("\n");
+            assertEquals(expectedOutput, outputArray[4]);
+        }
     }
 }
