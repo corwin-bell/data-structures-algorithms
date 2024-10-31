@@ -22,7 +22,7 @@ public class PersonQueueApp {
                     listPersons(personQueue);
                 }
                 else if (command.equalsIgnoreCase("dequeue")) {
-                    dequeue(personQueue, scnr);
+                    dequeue(personQueue);
                 }
                 else if (!command.equalsIgnoreCase("quit")) {
                     System.out.println("Command not recognized");
@@ -60,12 +60,14 @@ public class PersonQueueApp {
         } 
     }
     
-    public static void dequeue(ArrayQueue<Person> personQueue, Scanner scnr) { 
+    public static void dequeue(ArrayQueue<Person> personQueue) { 
         if (personQueue.isEmpty()) {
             System.out.println("Queue is empty."); 
         }
         else {
             System.out.printf("person: %s dequeued\n", personQueue.dequeue().getFirstName());
         }
-    }  
+    }
+    
+    // TODO: add sort command
 }
