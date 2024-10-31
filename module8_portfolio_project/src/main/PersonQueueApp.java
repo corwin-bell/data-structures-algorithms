@@ -13,7 +13,7 @@ public class PersonQueueApp {
         String command = "";
         try (Scanner scnr = new Scanner(System.in)) {
             while (!command.equalsIgnoreCase("quit")) {
-                System.out.println("Commands: 'enqueuePerson', 'listPersons', 'dequeue', 'quit'");
+                System.out.println("Commands: 'enqueuePerson', 'listPersons', 'dequeue', 'sort', 'quit'");
                 command = scnr.nextLine();
                 if (command.equalsIgnoreCase("enqueuePerson")) {
                     enqueuePerson(personQueue, scnr);
@@ -23,6 +23,9 @@ public class PersonQueueApp {
                 }
                 else if (command.equalsIgnoreCase("dequeue")) {
                     dequeue(personQueue);
+                }
+                else if (command.equalsIgnoreCase("sort")) {
+                    // sort(personQueue);
                 }
                 else if (!command.equalsIgnoreCase("quit")) {
                     System.out.println("Command not recognized");
@@ -69,5 +72,23 @@ public class PersonQueueApp {
         }
     }
     
-    // TODO: add sort command
+    public static void sort (ArrayQueue<Person> personQueue, Scanner scnr) {
+        // specify which field to sort by
+        System.out.println("Enter field to sort by: firstName, lastName, or age ");
+        String field = scnr.nextLine();
+        switch (field) {
+            case "firstName":
+                
+                break;
+            case "lastName":
+                
+                break;
+            case "age":
+                
+                break;
+            default:
+                break;
+        }        
+        // specify descending or ascending
+    }
 }

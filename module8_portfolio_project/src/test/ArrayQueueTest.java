@@ -2,17 +2,28 @@ package test;
 
 import static org.junit.Assert.assertEquals;
 
+import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
 import main.ArrayQueue;
 import main.Person;
+import java.util.Comparator;
 
 public class ArrayQueueTest {
+    private ArrayQueue<Person> testArrayQueue;
+    private Person john; 
+    private Person frank;
+    private Person Anne;
+    @BeforeEach
+    void setUp() {
+        testArrayQueue = new ArrayQueue<>();
+        john = new Person("John", "Smith", 25);
+        frank = new Person("Frank", "Jones", 35);
+        Anne = new Person("Anne", "Babson", 15); 
+    }
+
     @Test
-    void testDequeue() {
-        Person john = new Person("John", "Smith", 25);
-        Person frank = new Person("Frank", "Jones", 35);
-        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
+    void testDequeue() { 
         testArrayQueue.enqueue(john);
         testArrayQueue.enqueue(frank);
         Person frontItem = testArrayQueue.dequeue();
@@ -22,17 +33,12 @@ public class ArrayQueueTest {
 
     @Test
     void testEnqueue() {
-        Person testPerson = new Person("John", "Smith", 25);
-        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
-        testArrayQueue.enqueue(testPerson);
+        testArrayQueue.enqueue(john);
         assertEquals(1, testArrayQueue.size());
     }
 
     @Test
     void testFirst() {
-        Person john = new Person("John", "Smith", 25);
-        Person frank = new Person("Frank", "Jones", 35);
-        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         testArrayQueue.enqueue(john);
         testArrayQueue.enqueue(frank);
         assertEquals("John", testArrayQueue.first().getFirstName());
@@ -41,27 +47,35 @@ public class ArrayQueueTest {
 
     @Test
     void testIsEmpty() {
-        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         assertEquals(true, testArrayQueue.isEmpty());
     }
 
     @Test
     void testSize() {
-        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         assertEquals(0, testArrayQueue.size());
     }
 
     @Test
     void testToString() {
-        Person john = new Person("John", "Smith", 25);
-        Person frank = new Person("Frank", "Jones", 35);
-        Person Anne = new Person("Anne", "Babson", 15);
-        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         testArrayQueue.enqueue(john);
         testArrayQueue.enqueue(frank);
         testArrayQueue.enqueue(Anne);
         testArrayQueue.dequeue();
         String queueString = "first name: Frank, last name: Jones, age: 35\nfirst name: Anne, last name: Babson, age: 15\n";
         assertEquals(queueString, testArrayQueue.toString());        
+    }
+
+    @Test
+    void testSortfirstNameAsc() {
+        testArrayQueue.enqueue(john);
+        testArrayQueue.enqueue(frank);
+        testArrayQueue.enqueue(Anne);
+        testArrayQueue.sort(Comparator.comparing(Person::getFirstName));
+        String queueString = String.join("\n",
+            "first name: Anne, last name: Babson, age: 15", 
+        "first name: Frank, last name: Jones, age: 35",
+         "first name: John, last name: Smith, age: 25\n"
+         );
+         assertEquals(queueString, testArrayQueue.toString());        
     }
 }

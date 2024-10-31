@@ -1,5 +1,6 @@
 package main;
 
+import java.util.Comparator;
 
 
 public class ArrayQueue<T> implements Queue<T>{
@@ -56,6 +57,12 @@ public class ArrayQueue<T> implements Queue<T>{
         
     }
     
+    // TODO: add sort method
+    public void sort(Comparator<T> comp){
+        int last = front + size - 1;
+        QuickSorter.quickSortInPlace(arrayQueue, comp, front, last);
+    }
+
     @Override
     public String toString() {
         if (isEmpty()) return null;

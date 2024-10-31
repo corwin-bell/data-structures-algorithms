@@ -2,10 +2,10 @@ package main;
 import java.util.Comparator;
 
 public class QuickSorter {
-    public static <K> void quickSortInPlace(K[] S, Comparator<K> comp, int a, int b) {
+    public static <T> void quickSortInPlace(T[] S, Comparator<T> comp, int a, int b) {
         if (a >= b) return;                // subarray is trivially sorted
-        K pivot = S[b];
-        K temp;                            // temp object used for swapping
+        T pivot = S[b];
+        T temp;                            // temp object used for swapping
         int left = a;
         int right = b-1;
         while (left <= right) {
