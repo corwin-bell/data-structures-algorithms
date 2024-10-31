@@ -50,4 +50,18 @@ public class ArrayQueueTest {
         ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         assertEquals(0, testArrayQueue.size());
     }
+
+    @Test
+    void testToString() {
+        Person john = new Person("John", "Smith", 25);
+        Person frank = new Person("Frank", "Jones", 35);
+        Person Anne = new Person("Anne", "Babson", 15);
+        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
+        testArrayQueue.enqueue(john);
+        testArrayQueue.enqueue(frank);
+        testArrayQueue.enqueue(Anne);
+        testArrayQueue.dequeue();
+        String queueString = "first name: Frank, last name: Jones, age: 35\nfirst name: Anne, last name: Babson, age: 15\n";
+        assertEquals(queueString, testArrayQueue.toString());        
+    }
 }

@@ -58,11 +58,11 @@ public class ArrayQueue<T> implements Queue<T>{
     
     @Override
     public String toString() {
-        // TODO: fix to match queue order
         if (isEmpty()) return null;
         String queueString = "";
-        for (T item: arrayQueue) {
-            queueString += item.toString() + "\n";
+        for (int i = 0; i < size; i++) {
+            int place = (front + i) % arrayQueue.length;
+            queueString += arrayQueue[place].toString() + "\n";
         }
         return queueString;
     }
