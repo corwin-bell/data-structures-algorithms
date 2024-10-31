@@ -41,13 +41,13 @@ public class ArrayQueueTest {
 
     @Test
     void testIsEmpty() {
-        ArrayQueue testArrayQueue = new ArrayQueue<>();
+        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         assertEquals(true, testArrayQueue.isEmpty());
     }
 
     @Test
     void testSize() {
-        ArrayQueue testArrayQueue = new ArrayQueue<>();
+        ArrayQueue<Person> testArrayQueue = new ArrayQueue<>();
         assertEquals(0, testArrayQueue.size());
     }
 }

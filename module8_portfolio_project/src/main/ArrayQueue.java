@@ -5,17 +5,17 @@ package main;
 public class ArrayQueue<T> implements Queue<T>{
     // members, array
     private final int CAPACITY = 50; 
-    private T[] queueArray;
+    private T[] arrayQueue;
     private int front = 0;
     private int size = 0;
     // constructors
     public ArrayQueue(){
         // TODO: either supress warning or use other approach
-        this.queueArray = (T[]) new Object[CAPACITY];
+        this.arrayQueue = (T[]) new Object[CAPACITY];
     }
 
     public ArrayQueue(int capacity){
-        this.queueArray = (T[]) new Object[capacity];
+        this.arrayQueue = (T[]) new Object[capacity];
     }
 
     // methods
@@ -33,18 +33,18 @@ public class ArrayQueue<T> implements Queue<T>{
 
     @Override
     public void enqueue(T item) throws IllegalStateException{
-        if (size == queueArray.length) throw new IllegalStateException("Queue is full");
-        int queueEnd = (front + size) % queueArray.length;
-        queueArray[queueEnd] = item;
+        if (size == arrayQueue.length) throw new IllegalStateException("Queue is full");
+        int queueEnd = (front + size) % arrayQueue.length;
+        arrayQueue[queueEnd] = item;
         size++;
     }
 
     @Override
     public T dequeue() {
         if (isEmpty()) return null;
-        T frontItem = queueArray[front];
-        queueArray[front] = null;
-        front = (front + 1) % queueArray.length;
+        T frontItem = arrayQueue[front];
+        arrayQueue[front] = null;
+        front = (front + 1) % arrayQueue.length;
         size--;
         return frontItem;
     }
@@ -52,7 +52,18 @@ public class ArrayQueue<T> implements Queue<T>{
     @Override
     public T first() {
         if (isEmpty()) return null;
-        return queueArray[front];
+        return arrayQueue[front];
         
-    }    
+    }
+    
+    @Override
+    public String toString() {
+        // TODO: fix to match queue order
+        if (isEmpty()) return null;
+        String queueString = "";
+        for (T item: arrayQueue) {
+            queueString += item.toString() + "\n";
+        }
+        return queueString;
+    }
 }
