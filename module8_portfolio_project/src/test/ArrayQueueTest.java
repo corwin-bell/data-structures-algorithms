@@ -66,15 +66,16 @@ public class ArrayQueueTest {
     }
 
     @Test
-    void testSortfirstNameAsc() {
+    void testSortfirstNameDesc() {
         testArrayQueue.enqueue(john);
         testArrayQueue.enqueue(frank);
         testArrayQueue.enqueue(Anne);
-        testArrayQueue.sort(Comparator.comparing(Person::getFirstName));
+        Comparator<Person> sortFNameDesc = (Person p1, Person p2)->p2.getFirstName().compareTo(p1.getFirstName());
+        testArrayQueue.sort(sortFNameDesc);
         String queueString = String.join("\n",
-            "first name: Anne, last name: Babson, age: 15", 
-        "first name: Frank, last name: Jones, age: 35",
-         "first name: John, last name: Smith, age: 25\n"
+         "first name: John, last name: Smith, age: 25",
+         "first name: Frank, last name: Jones, age: 35",
+         "first name: Anne, last name: Babson, age: 15\n"
          );
          assertEquals(queueString, testArrayQueue.toString());        
     }
