@@ -5,6 +5,7 @@ public class Person {
     private String firstName;
     private String lastName;
     private int age;
+    
     // constructors
     public Person(){
     }
@@ -14,7 +15,8 @@ public class Person {
         this.lastName = lastName;
         this.age = age;
     }
-    // methods, get, set, toString
+    
+    // methods
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
