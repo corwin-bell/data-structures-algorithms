@@ -95,11 +95,11 @@ public class PersonQueueApp {
         String field = scnr.nextLine();
         switch (field) {
             case "firstName":
-                Comparator<Person> sortFNameDesc = (Person p1, Person p2)->p2.getFirstName().compareTo(p1.getFirstName());
-                personQueue.sort(sortFNameDesc);            
+            Comparator<Person> sortFNameDesc = (Person p1, Person p2)->p2.getFirstName().compareToIgnoreCase(p1.getFirstName());
+            personQueue.sort(sortFNameDesc);            
                 break;
             case "lastName":
-                Comparator<Person> sortLNameDesc = (Person p1, Person p2)->p2.getLastName().compareTo(p1.getLastName());
+                Comparator<Person> sortLNameDesc = (Person p1, Person p2)->p2.getLastName().compareToIgnoreCase(p1.getLastName());
                 personQueue.sort(sortLNameDesc);            
                 break;
             case "age":
