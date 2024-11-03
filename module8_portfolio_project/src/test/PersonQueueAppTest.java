@@ -23,6 +23,8 @@ public class PersonQueueAppTest {
     private final ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
     private final PrintStream originalOut = System.out;
     private String simulatedInput1;
+    private String simulatedInput2;
+    private String simulatedInput3;
 
     @BeforeEach
     public void setUp() {
@@ -33,6 +35,16 @@ public class PersonQueueAppTest {
             "John", // first name
             "Smith",  // last name
             "25\n"        // age
+        );
+        simulatedInput2 = String.join("\n",
+        "Frank", // first name
+        "Jones",  // last name
+            "35\n"        // age
+        );
+        simulatedInput3 = String.join("\n",
+            "Zoe", // first name
+            "Adams",  // last name
+            "15\n"        // age
         );
     }
 
@@ -84,24 +96,34 @@ public class PersonQueueAppTest {
 
     @Test
     void testSortFirstNameDesc() {
-        String simulatedInput2 = String.join("\n",
-        "Frank", // first name
-        "Jones",  // last name
-            "35\n"        // age
-        );
-        String simulatedInput3 = String.join("\n",
-            "Zoe", // first name
-            "Adams",  // last name
-            "15\n"        // age
-        );
-
         String sortField = "firstName\n";
-
         String combinedInput = simulatedInput1 + simulatedInput2 + simulatedInput3 + sortField;
         String expectedOutput = String.join("\n",
         "first name: Zoe, last name: Adams, age: 15",   
         "first name: John, last name: Smith, age: 25",
         "first name: Frank, last name: Jones, age: 35"
+        );
+        try (Scanner testScanner = new Scanner(new ByteArrayInputStream(combinedInput.getBytes()));) {
+            PersonQueueApp.enqueuePerson(personQueue, testScanner);
+            PersonQueueApp.enqueuePerson(personQueue, testScanner);
+            PersonQueueApp.enqueuePerson(personQueue, testScanner);
+            PersonQueueApp.sortDesc(personQueue, testScanner);
+            PersonQueueApp.listPersons(personQueue);
+            String[] outputArray = outputStream.toString().split("\n");
+            String[] filterArray = Arrays.copyOfRange(outputArray, 13, outputArray.length);
+            String filteredOutput = String.join("\n", filterArray);
+            assertEquals(expectedOutput, filteredOutput);
+        }
+    }
+    
+    @Test
+    void testSortLastNameDesc() {
+        String sortField = "lastName\n";
+        String combinedInput = simulatedInput1 + simulatedInput2 + simulatedInput3 + sortField;
+        String expectedOutput = String.join("\n",
+        "first name: John, last name: Smith, age: 25",
+        "first name: Frank, last name: Jones, age: 35",
+        "first name: Zoe, last name: Adams, age: 15"   
         );
         try (Scanner testScanner = new Scanner(new ByteArrayInputStream(combinedInput.getBytes()));) {
             PersonQueueApp.enqueuePerson(personQueue, testScanner);
