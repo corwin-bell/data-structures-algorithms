@@ -12,7 +12,6 @@ public class QuickSorter {
      */
     public static <T> void quickSortInPlace(T[] inArray, Comparator<T> comp, int first, int last) {
         if (first >= last) return;                // subarray is trivially sorted
-        // TODO: replace pivot choice with random index
         T pivot = inArray[last];
         T temp;                            // temp object used for swapping
         int left = first;

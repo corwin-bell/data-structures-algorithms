@@ -6,11 +6,6 @@ import java.util.Comparator;
 
 public class PersonQueueApp {
     public static void main(String[] args) throws Exception {
-        // TODO: run code and screenshot based on instructions
-        // Prompt the user of the program to add five people to the queue. 
-        // provide the contents of the queue
-        // sort the queue using the quick sort descending order by last name
-        // sort the queue using the quick sort descending order by age
         ArrayQueue<Person> personQueue = new ArrayQueue<>();
         String command = "";
         try (Scanner scnr = new Scanner(System.in)) {

@@ -13,6 +13,7 @@ public class ArrayQueue<T> implements Queue<T>{
     /** Default arrayQueue constructor with capacity of 50.
      * If longer queue desired, define capacity in paramaterized constructor. 
      */
+    @SuppressWarnings("unchecked") // type casting will not be exposed so ok not to check
     public ArrayQueue(){
         this.arrayQueue = (T[]) new Object[CAPACITY];
     }
@@ -20,6 +21,7 @@ public class ArrayQueue<T> implements Queue<T>{
     /** 
      * @param capacity potential arrayQueue length limit
      */
+    @SuppressWarnings("unchecked")
     public ArrayQueue(int capacity){
         this.arrayQueue = (T[]) new Object[capacity];
     }
